@@ -1,0 +1,32 @@
+{
+  "name": "url-tester",
+  "version": "1.0.0",
+  "description": "url tester",
+  "main": "index.js",
+  "bin": {
+    "url-tester": "bin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.wwlholding.com:wwl/docker/url-tester.git"
+  },
+  "keywords": [
+    "url",
+    "tester"
+  ],
+  "author": "Vincent Hornikx <vincent.hornikx@any-lamp.com>",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "chalk": "^4.0.0",
+    "csv-parse": "^4.8.8",
+    "fs": "0.0.1-security",
+    "inquirer": "^7.1.0",
+    "minimist": "^1.2.5",
+    "path": "^0.12.7",
+    "rimraf": "^3.0.2",
+    "table": "^5.4.6",
+    "yaml": "^1.8.3",
+    "yargs": "^15.3.1"
+  }
+}

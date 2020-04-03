@@ -1,0 +1,7 @@
+/*
+
+!/src
+/src/node_modules
+
+!/.gitignore
+!/docker-compose.yml
