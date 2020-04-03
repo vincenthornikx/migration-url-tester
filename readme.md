@@ -84,6 +84,9 @@ docker-compose run node npm run url-tester [command] [arguments] [--max-failures
 docker-compose -f /path/to/repository/docker-compose.yml run node npm run url-tester [command] [arguments] [--max-failures=<N>] [--concurrency=<N>] [-v|-vv|-vvv]
 ```
 
+## Configuration
+tba
+
 ## Commands
 
 ### profile list
@@ -92,12 +95,7 @@ url-tester profile list
 ```
 Lists profiles in your current profile registry
 
-## run
-```bash
-url-tester run [--max-failures=<N>] [--concurrency=<N>] [-v|-vv|-vvv]
-```
-
-### arguments
+#### arguments
 
 |Argument|Description|Default|
 |---|---|---|
