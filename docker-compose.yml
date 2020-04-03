@@ -4,5 +4,9 @@ services:
   node:
     image: node:12
     working_dir: /home/node/app
+    user: app
     volumes:
       - ./src:/home/node/app
+      - ./config:/home/node/app/config
+      - ./data:/home/node/app/data
+      - ./results:/home/node/app/results

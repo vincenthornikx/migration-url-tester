@@ -6,6 +6,9 @@
   "bin": {
     "url-tester": "bin/index.js"
   },
+  "scripts": {
+    "url-tester": "bin/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git@gitlab.wwlholding.com:wwl/docker/url-tester.git"
