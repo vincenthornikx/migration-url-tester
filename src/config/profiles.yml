@@ -1,0 +1,27 @@
+profiles:
+  - name: any_lamp_com
+    enabled: 1
+    baseUrl: https://www.any-lamp.com/
+    testUrl: https://prd.any-lamp.com/
+    urls:
+      - type: file
+        format: csv
+        url: config/urls/anylamp_com.csv
+      - type: file
+        format: csv
+        url: config/urls/anylamp_com_cms.csv
+    rewrites:
+      - url: config/rewrites/anylamp_com.csv
+  - name: nowazarowka_pl
+    enabled: 1
+    baseUrl: https://www.nowazarowka.pl/
+    testUrl: https://prd.nowazarowka.pl/
+    urls:
+      - type: file
+        format: csv
+        url: config/urls/nowazarowka_pl.csv
+      - type: file
+        format: csv
+        url: config/urls/nowazarowka_pl_cms.csv
+    rewrites:
+      - url: config/rewrites/nowazarowka_pl.csv

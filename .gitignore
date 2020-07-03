@@ -1,7 +1,19 @@
 /*
 
 !/src
-/src/node_modules
+/src/*
+
+!/src/bin
+
+!/src/config
+/src/config/*
+!/src/config/profiles.example.yml
+
+!/src/lib
+
+!/src/package.json
+!/src/package-lock.json
+
 
 !/.gitignore
 !/docker-compose.yml

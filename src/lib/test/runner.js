@@ -32,6 +32,10 @@ module.exports = class TestRunner {
                         process.exit();
                     }
                 }
+                if (options.maxTests > -1 && (this.successes + this.failures) > options.maxTests) {
+                    logger.notice('Max tests reached');
+                    process.exit();
+                }
             });
             this.running++;
         }

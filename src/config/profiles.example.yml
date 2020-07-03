@@ -1,0 +1,14 @@
+profiles:
+  - name: example_name
+    enabled: 1
+    baseUrl: https://www.example.com/
+    testUrl: https://new.example.com/
+    urls:
+      - type: file
+        format: csv
+        url: config/urls/example_com.csv
+      - type: url
+        format: sitemap
+        url: https://www.example.com/sitemap.xml
+    rewrites:
+      - url: config/rewrites/example_com.csv

@@ -8,11 +8,12 @@ const Rewrite = require('../test/rewrite');
 const Results = require('./results');
 
 module.exports = class Profile {
-    constructor({name, baseUrl, testUrl, urls, rewrites}) {
+    constructor({name, enabled, baseUrl, testUrl, urls, rewrites}) {
         // debug
         //sitemaps = [];
 
         this.name = name;
+        this.enabled = enabled;
         this.baseUrl = baseUrl;
         this.testUrl = testUrl;
         this.urls = urls ? urls.map(urlConfig => new Urls(urlConfig)) : [];
@@ -20,6 +21,10 @@ module.exports = class Profile {
     }
 
     test(runner) {
+        if (!this.enabled) {
+            return;
+        }
+
         const results = new Results(this.name);
 
         this.urls.map(urls => {
@@ -27,9 +32,7 @@ module.exports = class Profile {
                 .fetch()
                 .then(list => {
                     list.map(url => {
-                        url = url.replace(this.baseUrl, this.testUrl);
-
-                        runner.push(new Url(results, url));
+                        runner.push(new Url(results, url, url.replace(this.baseUrl, this.testUrl)));
                     });
                 });
         });
@@ -39,7 +42,7 @@ module.exports = class Profile {
                 .fetch()
                 .then(rows => {
                     rows.map(row => {
-                         runner.push(new Rewrite(results, this.testUrl, row[0], row[1]));
+                         runner.push(new Rewrite(results, this.baseUrl, this.testUrl, row[0], row[1]));
                     });
                 });
         })
