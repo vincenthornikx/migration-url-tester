@@ -17,16 +17,19 @@ npm install
 #### Install as a package
 ```bash
 # install as a linked package
+cd src
 sudo npm link
 ```
 
 ## Run
 ```bash
+cd src
 node bin/index.js run [--max-failures=<N>] [--max-tests=<N>] [--concurrency=<N>] [-v|-vv|-vvv]
 ```
 
 ### If you linked
 ```bash
+# run from where your config directory is
 url-tester run [--max-failures=<N>] [--max-tests=<N>] [--concurrency=<N>] [-v|-vv|-vvv]
 ```
 
