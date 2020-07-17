@@ -13,8 +13,8 @@ module.exports = class Results {
     constructor(profile) {
         this.profile = profile;
         this.path = path.normalize(process.cwd() + '/results/');
-        if (fs.existsSync(this.path)) {
-            rimraf.sync(this.path);
+        if (!fs.existsSync(this.path)) {
+            fs.mkdirSync(this.path, { recursive: true });
         }
 
         this.logs = {};
@@ -41,9 +41,11 @@ module.exports = class Results {
     write() {
         const logPath = path.normalize(process.cwd() + '/results/' + this.profile + '/');
 
-        if (!fs.existsSync(logPath)) {
-            fs.mkdirSync(logPath, { recursive: true });
+        if (fs.existsSync(logPath)) {
+            rimraf.sync(logPath);
         }
+
+        fs.mkdirSync(logPath, { recursive: true });
 
         const summary = [
             'Success: ' + this.successes,
