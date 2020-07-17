@@ -5,7 +5,6 @@ const results = require('../lib/model/results');
 
 process.on('exit', results.flush);
 
-require('../lib/controller/profile');
 require('../lib/controller/run');
 
 

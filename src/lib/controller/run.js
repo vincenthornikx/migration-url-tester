@@ -14,7 +14,12 @@ module.exports = new class Controller {
 
     run() {
         const runner = new Runner(options.concurrency);
+        const selectedProfile = options.profile;
 
-        config.getProfiles().map(profile => profile.test(runner));
+        config.getProfiles().map(profile => {
+            if (!selectedProfile || selectedProfile == profile.name) {
+                profile.test(runner);
+            }
+        });
     }
 }

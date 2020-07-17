@@ -6,6 +6,8 @@ const Url = require('../test/url');
 const Rewrite = require('../test/rewrite');
 
 const Results = require('./results');
+const options = require('../options');
+const logger = require('../logger');
 
 module.exports = class Profile {
     constructor({name, enabled, baseUrl, testUrl, urls, rewrites}) {
@@ -31,9 +33,13 @@ module.exports = class Profile {
             urls
                 .fetch()
                 .then(list => {
-                    list.map(url => {
-                        runner.push(new Url(results, url, url.replace(this.baseUrl, this.testUrl)));
-                    });
+                    if (options.dryRun) {
+                        logger.notice('Will test ' + list.length + ' urls from list ' + urls.url);
+                    } else {
+                        list.map(url => {
+                            runner.push(new Url(results, url, url.replace(this.baseUrl, this.testUrl)));
+                        });
+                    }
                 });
         });
 
@@ -41,9 +47,13 @@ module.exports = class Profile {
             rewrite
                 .fetch()
                 .then(rows => {
-                    rows.map(row => {
-                         runner.push(new Rewrite(results, this.baseUrl, this.testUrl, row[0], row[1]));
-                    });
+                    if (options.dryRun) {
+                        logger.notice('Will test ' + rows.length + ' rewrites from ' + rewrite.url);
+                    } else {
+                        rows.map(row => {
+                             runner.push(new Rewrite(results, this.baseUrl, this.testUrl, row[0], row[1]));
+                        });
+                    }
                 });
         })
     }
