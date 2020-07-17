@@ -24,6 +24,7 @@ module.exports = class Profile {
 
     test(runner) {
         if (!this.enabled) {
+            logger.notice('Profile \'' + this.name + '\' is not enabled');
             return;
         }
 
@@ -34,7 +35,7 @@ module.exports = class Profile {
                 .fetch()
                 .then(list => {
                     if (options.dryRun) {
-                        logger.notice('Will test ' + list.length + ' urls from list ' + urls.url);
+                        logger.notice('[' + this.name + '] Will test ' + list.length + ' urls from list ' + urls.url);
                     } else {
                         list.map(url => {
                             runner.push(new Url(results, url, url.replace(this.baseUrl, this.testUrl)));
@@ -48,13 +49,13 @@ module.exports = class Profile {
                 .fetch()
                 .then(rows => {
                     if (options.dryRun) {
-                        logger.notice('Will test ' + rows.length + ' rewrites from ' + rewrite.url);
+                        logger.notice('[' + this.name + '] Will test ' + rows.length + ' rewrites from ' + rewrite.url);
                     } else {
                         rows.map(row => {
                              runner.push(new Rewrite(results, this.baseUrl, this.testUrl, row[0], row[1]));
                         });
                     }
                 });
-        })
+        });
     }
 }
