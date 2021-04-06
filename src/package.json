@@ -20,7 +20,7 @@
   "author": "Vincent Hornikx <vincent.hornikx@any-lamp.com>",
   "license": "GPL-3.0",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "chalk": "^4.0.0",
     "csv-parse": "^4.8.8",
     "fs": "0.0.1-security",
